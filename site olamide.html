@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olamide</title>
+
+<style>
+
+/* FONTES PREMIUM */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter', sans-serif;
+}
+
+/* BACKGROUND ORIGINAL */
+
+body{
+background:linear-gradient(135deg,#f7e9a2,#e2c55a,#bfa234);
+color:#0b3d2e;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(255,255,255,.96);
+backdrop-filter:blur(18px);
+padding:18px 0;
+z-index:1000;
+box-shadow:0 5px 30px rgba(0,0,0,.06);
+transition:.4s ease;
+}
+
+header.shrink{
+padding:10px 0;
+box-shadow:0 2px 25px rgba(0,0,0,.12);
+}
+
+.header-container{
+max-width:1100px;
+margin:auto;
+padding:0 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+/* MENU */
+
+.menu-toggle{
+font-size:30px;
+cursor:pointer;
+}
+
+nav{
+display:none;
+flex-direction:column;
+position:absolute;
+top:75px;
+right:25px;
+background:white;
+padding:26px;
+border-radius:24px;
+box-shadow:0 30px 70px rgba(0,0,0,.2);
+}
+
+nav.active{
+display:flex;
+}
+
+nav a{
+text-decoration:none;
+color:#0b3d2e;
+font-weight:600;
+margin:10px 0;
+}
+
+/* SEÇÕES */
+
+section{
+max-width:1100px;
+margin:auto;
+padding:140px 25px;
+text-align:center;
+display:none;
+opacity:0;
+transform:translateY(40px);
+transition:.8s cubic-bezier(.4,0,.2,1);
+}
+
+section.show{
+display:block;
+opacity:1;
+transform:translateY(0);
+}
+
+/* HERO */
+
+.hero-title{
+font-size:46px;
+font-weight:800;
+background:linear-gradient(45deg,#0b3d2e,#145c43);
+-webkit-background-clip:text;
+color:transparent;
+line-height:1.2;
+}
+
+/* PRODUCTS */
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+margin-top:55px;
+}
+
+/* CARD */
+
+.card{
+background:white;
+padding:30px;
+border-radius:40px;
+box-shadow:
+0 20px 50px rgba(0,0,0,.05),
+0 8px 25px rgba(0,0,0,.04);
+transition:.45s ease;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-12px) scale(1.02);
+box-shadow:0 45px 90px rgba(0,0,0,.15);
+}
+
+.card img{
+width:100%;
+height:260px;
+object-fit:contain;
+border-radius:26px;
+margin-bottom:22px;
+}
+
+/* SELO EM BREVE */
+
+.selo{
+position:absolute;
+top:18px;
+left:-45px;
+background:#c0392b;
+color:white;
+padding:8px 60px;
+font-size:12px;
+font-weight:700;
+transform:rotate(-45deg);
+box-shadow:0 5px 15px rgba(0,0,0,.25);
+letter-spacing:1px;
+}
+
+/* BOTÃO */
+
+.btn{
+background:linear-gradient(135deg,#0b3d2e,#145c43);
+color:white;
+padding:14px 34px;
+border:none;
+border-radius:60px;
+cursor:pointer;
+font-weight:600;
+transition:.35s ease;
+}
+
+.btn:hover{
+opacity:.9;
+transform:translateY(-3px);
+}
+
+/* MODAL */
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(14px);
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+.modal.active{
+display:flex;
+}
+
+.modal-box{
+background:white;
+padding:40px;
+border-radius:36px;
+width:92%;
+max-width:480px;
+position:relative;
+animation:modalPop .35s ease;
+}
+
+/* FOOTER */
+
+footer{
+background:white;
+text-align:center;
+padding:50px;
+margin-top:120px;
+font-size:14px;
+}
+
+/* ANIMAÇÃO */
+
+@keyframes modalPop{
+from{
+opacity:0;
+transform:scale(.85) translateY(25px);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+.hero-title{font-size:32px;}
+.products{gap:28px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<header id="header">
+<div class="header-container">
+
+<h2>Olamide</h2>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="menu">
+<a onclick="abrirAba('inicio')">Início</a>
+<a onclick="abrirAba('produtos')">Produtos</a>
+<a onclick="abrirAba('sobre')">Sobre</a>
+
+<a href="https://instagram.com/olamideoficial_" target="_blank">
+Instagram
+</a>
+</nav>
+
+</div>
+</header>
+
+<!-- INÍCIO -->
+
+<section id="inicio" class="show">
+
+<img src="logo-olamide.jpg"
+style="width:100%;max-width:340px;border-radius:40px;">
+
+<h1 class="hero-title">
+A riqueza e a beleza dos seus cachos começam aqui
+</h1>
+
+<p style="margin-top:30px;max-width:700px;margin:auto;line-height:1.9">
+Desenvolvemos soluções científicas para cabelos crespos e cacheados.
+</p>
+
+<br>
+
+<button class="btn" onclick="abrirAba('produtos')">
+Conhecer Produtos
+</button>
+
+</section>
+
+<!-- PRODUTOS -->
+
+<section id="produtos">
+
+<h2>Produtos Olamide</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="mascara-real.jpg">
+<h3>Máscara Capilar Olamide</h3>
+<p>Hidratação profunda e nutrição intensa.</p>
+
+<button class="btn" onclick="abrirInfo('mascara')">
+Mais informações
+</button>
+</div>
+
+<div class="card">
+
+<div class="selo">EM BREVE</div>
+
+<img src="pomada.jpg">
+<h3>Pomada Anestésica</h3>
+<p>Produto em desenvolvimento.</p>
+
+<button class="btn" onclick="abrirInfo('pomada')">
+Mais informações
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SOBRE -->
+
+<section id="sobre">
+
+<h2>Sobre a Olamide</h2>
+
+<p style="max-width:800px;margin:auto;line-height:1.9">
+Equipe criada na Expo Ciência do Colégio Antônio Vieira,
+participação na FENIC 2025 com apoio do SEBRAE.
+
+Desenvolvemos produtos científicos para cabelos crespos e cacheados.
+</p>
+
+</section>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal" onclick="fecharFora(event)">
+<div class="modal-box">
+
+<span style="position:absolute;top:15px;right:22px;font-size:28px;cursor:pointer"
+onclick="fecharInfo()">✕</span>
+
+<img id="modal-img"
+style="display:none;width:100%;border-radius:30px;margin-bottom:20px;">
+
+<div id="titulo"></div>
+<div id="descricao"></div>
+
+</div>
+</div>
+
+<footer>
+© 2026 Olamide — Todos os direitos reservados.
+</footer>
+
+<script>
+
+/* MENU */
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+/* HEADER SCROLL */
+
+window.addEventListener("scroll",()=>{
+document.getElementById("header")
+?.classList.toggle("shrink",window.scrollY>60);
+});
+
+/* ABAS */
+
+function abrirAba(id){
+
+document.querySelectorAll("section").forEach(sec=>{
+sec.classList.remove("show");
+sec.style.display="none";
+});
+
+let target=document.getElementById(id);
+
+if(target){
+target.style.display="block";
+setTimeout(()=>target.classList.add("show"),50);
+}
+
+document.getElementById("menu").classList.remove("active");
+}
+
+/* MODAL */
+
+function abrirInfo(tipo){
+
+let titulo=document.getElementById("titulo");
+let descricao=document.getElementById("descricao");
+let img=document.getElementById("modal-img");
+
+document.getElementById("modal").classList.add("active");
+
+img.style.display="none";
+
+if(tipo==="mascara"){
+
+img.src="mascara-real.jpg";
+img.style.display="block";
+
+titulo.innerText="Máscara Capilar Olamide";
+
+descricao.innerHTML=`
+<ul>
+<li>Hidratação profunda</li>
+<li>Nutrição intensa</li>
+<li>Redução do frizz</li>
+<li>Brilho natural</li>
+<li>Definição dos cachos</li>
+</ul>
+
+<p style="margin-top:15px">
+Produto desenvolvido para cabelos crespos e cacheados.
+</p>
+`;
+}
+
+if(tipo==="pomada"){
+
+img.src="pomada.jpg";
+img.style.display="block";
+
+titulo.innerText="Pomada Anestésica";
+
+descricao.innerHTML=`
+<p>
+Produto em fase de desenvolvimento científico.
+</p>
+`;
+}
+
+}
+
+function fecharInfo(){
+document.getElementById("modal").classList.remove("active");
+}
+
+function fecharFora(e){
+if(e.target.id==="modal") fecharInfo();
+}
+
+window.onload=()=>document.getElementById("inicio").classList.add("show");
+
+</script>
+
+</body>
+</html>
